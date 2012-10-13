@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App Disabler</string>
+
+    <string name="success">Successfully set app enabled/disabled setting.</string>
+    <string name="error_unknown">Unknown error while setting app enabled/disabled setting.</string>
+    <string name="error_root">Error gaining root. Please allow root permissions to App Disabler when asked.</string>
+    <string name="error_no_root">Root was not detected on your device. App Disabler requires root to run.</string>
+
+    <string name="dialog_no_root_title">Error!</string>
+    <string name="dialog_no_root_message">Root was not detected on your device. App Disabler requires root to work.</string>
+
+    <string name="dialog_warning_title">Warning!</string>
+    <string name="dialog_warning_message">App Disabler can alter the functionality of your device, possibly for the worse. By using App Disabler you agree that I (nebkat) am not responsible for any damages caused to your device.</string>
+
+</resources>
