@@ -7,22 +7,10 @@ import java.io.File;
 import java.io.InputStreamReader;
 
 public class RootUtils {
-    private static boolean sHasCheckedRoot = false;
-    private static boolean sHasRoot = false;
 
     public static boolean hasRoot() {
-        return hasRoot(true);
-    }
-
-    public static boolean hasRoot(boolean cached) {
-        if (cached && sHasCheckedRoot) return sHasRoot;
-
-        sHasRoot = false;
-        sHasCheckedRoot = true;
-
-        if (new File("/system/bin/su").isFile()) {
-            sHasRoot = true;
-            return sHasRoot;
+        if (new File("/system/bin/su").isFile() || new File("/system/xbin/su").isFile()) {
+            return true;
         }
 
         try {
@@ -32,20 +20,16 @@ public class RootUtils {
             in.close();
             hasRoot.destroy();
             if (su != null) {
-                sHasRoot = true;
-                return sHasRoot;
+                return true;
             }
         } catch (Exception e) {
-            sHasRoot = false;
-            return sHasRoot;
+            // continue
         }
 
-        String buildTags = Build.TAGS;
-        if (buildTags != null && buildTags.contains("test-keys")) {
-            sHasRoot = true;
-            return sHasRoot;
+        if (Build.TAGS != null && Build.TAGS.contains("test-keys")) {
+            return true;
         }
 
-        return sHasRoot;
+        return false;
     }
 }
