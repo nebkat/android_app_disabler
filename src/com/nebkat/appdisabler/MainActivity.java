@@ -137,9 +137,12 @@ public class MainActivity extends SherlockListActivity {
 
             ImageView icon = (ImageView) item.findViewById(R.id.icon);
             TextView title = (TextView) item.findViewById(R.id.title);
+            TextView packageName = (TextView) item.findViewById(R.id.package_name);
 
             icon.setImageDrawable(info.loadIcon(mPackageManager));
             title.setText(info.loadLabel(mPackageManager));
+            packageName.setText(info.packageName);
+
 
             item.setTag(info.packageName);
 
